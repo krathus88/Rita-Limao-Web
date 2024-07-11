@@ -1,0 +1,81 @@
+:root {
+    --bs-body-bg: #f0f1f1;
+    /* --theme-background-color: #f0f1f1; */ /* Default light theme color */
+}
+
+[data-bs-theme="dark"] {
+    --bs-body-bg: #212529; /* Dark theme color */
+}
+
+#root {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    transition: background-color 0.5s ease;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.font-ita {
+    font-style: italic;
+}
+
+.fw-light {
+    font-weight: 400;
+}
+
+.fw-bold {
+    font-weight: 700;
+}
+
+.not-selectable {
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+.no-link {
+    text-decoration: none !important;
+}
+
+.scroll-container {
+    cursor: grab;
+    overflow-x: hidden !important;
+}
+
+.scroll-container.active {
+    cursor: grabbing;
+}
+
+.scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(405deg);
+    }
+}
+
+.spin-animation {
+    animation: spin 1.5s linear infinite;
+}

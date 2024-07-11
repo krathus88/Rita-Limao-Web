@@ -1,0 +1,84 @@
+header {
+    position: relative;
+    min-height: auto; /* Change to min-height */
+}
+
+header .home-header {
+    height: 0;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url("https://ritalimao.home.blog/wp-content/uploads/2021/08/dsc_1125-2.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out,
+        height 0.5s ease-in-out;
+}
+
+header .home-header.enter {
+    transform: translateY(0); /* Move upwards */
+}
+
+header .home-header.show {
+    opacity: 1; /* Fade out */
+    visibility: visible; /* Hide from screen */
+    height: 100%; /* Collapse height */
+}
+
+header .home-header .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+header .home-header .wave path {
+    fill: var(--bs-body-bg);
+    transition: fill 0.5s ease;
+}
+
+.header-text {
+    position: absolute;
+    top: 15%;
+    right: 2%;
+    max-width: 75%;
+    color: #dee2e6;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#navbarCollapse {
+    font-size: 1.25rem;
+}
+
+@media (min-width: 576px) {
+    .header-text {
+        max-width: 60%; /* Limit the width to prevent overflow */
+    }
+}
+@media (min-width: 768px) {
+    .header-text {
+        max-width: 55%; /* Limit the width to prevent overflow */
+    }
+}
+@media (min-width: 992px) {
+    .header-text {
+        max-width: 50%; /* Limit the width to prevent overflow */
+    }
+}
+@media (min-width: 1200px) {
+    .header-text {
+        max-width: 40%; /* Limit the width to prevent overflow */
+    }
+}
+@media (min-width: 1400px) {
+    .header-text {
+        max-width: 35%; /* Limit the width to prevent overflow */
+    }
+}
