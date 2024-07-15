@@ -12,7 +12,7 @@ api.add_router("api/home", homepage_router, tags=["HomePage"])
 
 
 @api.get("/")
-def root(request):
+async def root(request):
     return {"message": "Hello World"}
 
 

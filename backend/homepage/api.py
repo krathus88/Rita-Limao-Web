@@ -10,7 +10,7 @@ router = Router()
 
 @router.get("/", response=HomeDataResponse)
 @decorate_view(cache_page(10 * 60))  # seconds
-def get_home_data(request):
+async def get_home_data(request):
     jumbotrons = Jumbotron.objects.all().order_by("display_order")
     jumbotron_data = [JumbotronSchema.from_orm(j).dict() for j in jumbotrons]
 
