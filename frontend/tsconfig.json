@@ -22,7 +22,8 @@
         "paths": {
             "@components/*": ["./src/components/*"],
             "@pages/*": ["./src/pages/*"],
-            "@type/*": ["./src/types/*"]
+            "@type/*": ["./src/types/*"],
+            "@images/*": ["./src/assets/images/*"]
         }
     },
     "include": ["src"],

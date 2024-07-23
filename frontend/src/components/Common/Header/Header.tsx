@@ -10,8 +10,8 @@ export function Header() {
 
     useEffect(() => {
         const header = document.querySelector("header");
-        const imgHeader = document.getElementsByClassName("home-header")[0]; // Access the first element
-        let timeoutId: ReturnType<typeof setTimeout> | undefined; // Declare timeout variable
+        const imgHeader = document.getElementsByClassName("home-header")[0];
+        let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
         if (header) {
             if (isHomePage) {
@@ -23,12 +23,12 @@ export function Header() {
                 timeoutId = setTimeout(() => {
                     imgHeader.classList.remove("show");
                     header.style.minHeight = "auto";
-                }, 500); // Adjust the delay time as needed
+                }, 500); // Adjust the delay time
             }
         }
 
         return () => {
-            // Clean up function to clear the timeout when component unmounts or pathname changes
+            // Clear the timeout when component unmounts or pathname changes
             clearTimeout(timeoutId);
         };
     }, [isHomePage]);
@@ -72,6 +72,11 @@ export function Header() {
                     className="navbar-collapse collapse justify-content-end"
                     id="navbarCollapse">
                     <ul className="navbar-nav mb-2 mb-md-0">
+                        <li className="nav-item">
+                            <Link className="nav-link fw-bold" to="/">
+                                Home
+                            </Link>
+                        </li>
                         <li className="nav-item">
                             <Link className="nav-link fw-bold" to="/portfolio">
                                 Portfolio

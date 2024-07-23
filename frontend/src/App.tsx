@@ -8,23 +8,23 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                lazy: () => import("./pages/HomePage"),
+                lazy: () => import("@pages/HomePage"),
             },
             {
                 path: "/portfolio",
-                lazy: () => import("./pages/PortfolioPage"),
+                lazy: () => import("@pages/PortfolioPage"),
             },
             {
                 path: "/blog",
-                lazy: () => import("./pages/BlogPage"),
+                lazy: () => import("@pages/BlogPage"),
             },
             {
                 path: "/about",
-                lazy: () => import("./pages/AboutPage"),
+                lazy: () => import("@pages/AboutPage"),
             },
             {
                 path: "/contact",
-                lazy: () => import("./pages/ContactPage"),
+                lazy: () => import("@pages/ContactPage"),
             },
         ],
     },

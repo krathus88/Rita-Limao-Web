@@ -17,7 +17,8 @@ export function Card({ title, subTitle, description, imgSource, link }: CardProp
                         className="rounded-top-2"
                         src={imgSource}
                         role="img"
-                        aria-label="Card Image"></img>
+                        aria-label="Card Image"
+                        loading="lazy"></img>
                     <div className="text-area font-ita">
                         <h1>{title}</h1>
                         <h2>{subTitle}</h2>
@@ -26,13 +27,11 @@ export function Card({ title, subTitle, description, imgSource, link }: CardProp
                 <div className="card-body d-flex flex-column">
                     <p className="card-text not-selectable">{description}</p>
                     <Link
-                        className="d-flex justify-content-center no-link mt-auto"
-                        to={link}>
-                        <button
-                            type="button"
-                            className="btn btn-lg btn-outline-secondary fw-bold">
-                            Read More
-                        </button>
+                        type="button"
+                        className="btn btn-lg btn-outline-secondary fw-bold no-link mx-auto mt-auto"
+                        to={link}
+                        style={{ width: "auto" }}>
+                        Read More
                     </Link>
                 </div>
             </div>

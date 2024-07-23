@@ -7,7 +7,7 @@ type ShowReelsProps = {
 
 export function ShowReels({ jumbotronData }: ShowReelsProps) {
     return (
-        <div id="Jumbotron">
+        <div className="container my-5" id="Jumbotron">
             {jumbotronData.map((item: JumbotronDataType, index: number) => {
                 // Generate swapOrder value based on index
                 const swapOrder = index % 2 === 0;

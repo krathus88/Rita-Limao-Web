@@ -27,8 +27,9 @@ export function Jumbotron({
                             <iframe
                                 className="rounded-3"
                                 src={`${videoSource}?autoplay=0`}
-                                title="YouTube video"
+                                title="Showreel Youtube video"
                                 allowFullScreen
+                                loading="lazy"
                             />
                         </div>
                     </div>

@@ -26,12 +26,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    text-align: center;
+    width: auto;
 }
 
-#Productions > div {
+#Productions > .card-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-wrap: nowrap;
+    width: auto;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+#Productions > .card-wrapper:active {
+    cursor: grabbing;
+}
+
+#Productions > .card-wrapper::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar for Webkit browsers (Chrome, Safari) */
 }
 
 #Productions .col-auto {

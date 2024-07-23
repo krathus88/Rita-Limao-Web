@@ -8,7 +8,7 @@ from homepage.api import router as homepage_router
 api = NinjaAPI(csrf=True, **app_configs)
 
 
-api.add_router("api/home", homepage_router, tags=["HomePage"])
+api.add_router("home", homepage_router, tags=["HomePage"])
 
 
 @api.get("/")
