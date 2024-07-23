@@ -34,7 +34,7 @@ export function Header() {
     }, [isHomePage]);
 
     return (
-        <header className="mb-4">
+        <header>
             <div className="home-header">
                 <h3 className="header-text fw-bold rounded-2">
                     Hey there, I’m a wannabe freelance filmmaker with many interests
@@ -69,7 +69,7 @@ export function Header() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div
-                    className="navbar-collapse collapse justify-content-end"
+                    className="navbar-collapse collapse justify-content-end text-center"
                     id="navbarCollapse">
                     <ul className="navbar-nav mb-2 mb-md-0">
                         <li className="nav-item">

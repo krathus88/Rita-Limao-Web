@@ -42,7 +42,7 @@ header .home-header .wave path {
     transition: fill 0.5s ease;
 }
 
-.header-text {
+header .header-text {
     position: absolute;
     top: 15%;
     right: 2%;
@@ -53,7 +53,7 @@ header .home-header .wave path {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-#navbarCollapse {
+header #navbarCollapse {
     font-size: 1.25rem;
 }
 
