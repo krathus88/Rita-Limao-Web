@@ -42,7 +42,7 @@ header .home-header .wave path {
     transition: fill 0.5s ease;
 }
 
-header .header-text {
+.header-text {
     position: absolute;
     top: 15%;
     right: 2%;
