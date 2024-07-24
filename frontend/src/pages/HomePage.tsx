@@ -55,9 +55,8 @@ export function Component() {
     useEffect(() => {
         const savedJumbotron = localStorage.getItem("jumbotronData");
         const savedCards = localStorage.getItem("cardsData");
-        console.log("inside use effect");
+
         if (!savedJumbotron || !savedCards) {
-            console.log("fetching data");
             fetchData();
         }
     }, [fetchData]);

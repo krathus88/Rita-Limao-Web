@@ -10,10 +10,11 @@ export function About() {
                 living in London, England with a creative will to grow and thrive in the
                 film industry.
             </p>
-            <div className="d-flex ">
-                <figure className=" text-center">
+
+            <div className="d-flex">
+                <figure className="text-center">
                     <Zoom in={true} timeout={500}>
-                        <img className="rounded" src={aboutImg} width="325" />
+                        <img className="rounded" src={aboutImg} />
                     </Zoom>
                     <Fade in={true} timeout={1250}>
                         <figcaption>Hey, that’s me.</figcaption>

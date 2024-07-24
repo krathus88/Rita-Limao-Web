@@ -5,10 +5,20 @@
 #AboutArticle figure {
     float: left;
     margin: 0.5em 1em 0.5em 0;
+    max-width: 325px;
 }
 
-@media (max-width: 720px) {
+#AboutArticle figure img {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
     #AboutArticle > div {
         flex-direction: column;
+    }
+
+    #AboutArticle figure {
+        margin-left: auto;
+        margin-right: auto;
     }
 }

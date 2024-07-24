@@ -11,4 +11,5 @@
 
 .masonry-image:hover {
     transform: scale(1.045);
+    cursor: pointer;
 }

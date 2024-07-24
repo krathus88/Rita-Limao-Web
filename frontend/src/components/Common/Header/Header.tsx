@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import { ThemeSwitch } from "./ThemeSwitch";
+import { Collapse } from "bootstrap";
 
 export function Header() {
     const location = useLocation();
+    const navbarCollapseRef = useRef(null);
 
     const isHomePage = location.pathname === "/";
 
@@ -20,10 +22,8 @@ export function Header() {
                 header.style.minHeight = "100dvh";
             } else {
                 imgHeader.classList.remove("enter");
-                timeoutId = setTimeout(() => {
-                    imgHeader.classList.remove("show");
-                    header.style.minHeight = "auto";
-                }, 500); // Adjust the delay time
+                imgHeader.classList.remove("show");
+                header.style.minHeight = "auto";
             }
         }
 
@@ -32,6 +32,15 @@ export function Header() {
             clearTimeout(timeoutId);
         };
     }, [isHomePage]);
+
+    const handleNavLinkClick = () => {
+        if (navbarCollapseRef.current) {
+            const bsCollapse = new Collapse(navbarCollapseRef.current, {
+                toggle: false,
+            });
+            bsCollapse.hide();
+        }
+    };
 
     return (
         <header>
@@ -69,31 +78,47 @@ export function Header() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div
-                    className="navbar-collapse collapse justify-content-end text-center"
-                    id="navbarCollapse">
-                    <ul className="navbar-nav mb-2 mb-md-0">
+                    className="navbar-collapse collapse justify-content-end text-center "
+                    id="navbarCollapse"
+                    ref={navbarCollapseRef}>
+                    <ul className="navbar-nav mb-2 mb-md-0 border-bottom">
                         <li className="nav-item">
-                            <Link className="nav-link fw-bold" to="/">
+                            <Link
+                                className="nav-link fw-bold"
+                                to="/"
+                                onClick={handleNavLinkClick}>
                                 Home
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link fw-bold" to="/portfolio">
+                            <Link
+                                className="nav-link fw-bold"
+                                to="/portfolio"
+                                onClick={handleNavLinkClick}>
                                 Portfolio
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link fw-bold" to="/blog">
+                            <Link
+                                className="nav-link fw-bold"
+                                to="/blog"
+                                onClick={handleNavLinkClick}>
                                 Blog
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link fw-bold" to="/about">
+                            <Link
+                                className="nav-link fw-bold"
+                                to="/about"
+                                onClick={handleNavLinkClick}>
                                 About
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link fw-bold" to="/contact">
+                            <Link
+                                className="nav-link fw-bold"
+                                to="/contact"
+                                onClick={handleNavLinkClick}>
                                 Contact Me
                             </Link>
                         </li>
