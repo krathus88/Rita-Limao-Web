@@ -11,7 +11,7 @@ router = Router()
 
 
 @router.get("/", response=HomeDataResponse)
-# @decorate_view(cache_page(10 * 60))  # seconds
+@decorate_view(cache_page(10 * 60))  # seconds
 async def get_home_data(request):
     jumbotron_data = await sync_to_async(list)(
         Jumbotron.objects.all().order_by("display_order")

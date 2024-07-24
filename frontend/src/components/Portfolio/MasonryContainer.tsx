@@ -2,8 +2,13 @@ import { useState } from "react";
 import { MasonryImages } from "./MasonryImages";
 import { Masonry } from "@mui/lab";
 import { Grow, Dialog } from "@mui/material";
+import type { MasonryDataType } from "@type/portfolioTypes";
 
-export function MasonryContainer() {
+type MasonryContainerProps = {
+    masonryData: MasonryDataType[];
+};
+
+export function MasonryContainer({ masonryData }: MasonryContainerProps) {
     const [open, setOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
@@ -18,13 +23,13 @@ export function MasonryContainer() {
 
     const handleNextImage = () => {
         setSelectedImageIndex((prevIndex) =>
-            prevIndex === imageUrls.length - 1 ? 0 : prevIndex + 1
+            prevIndex === masonryData.length - 1 ? 0 : prevIndex + 1
         );
     };
 
     const handlePrevImage = () => {
         setSelectedImageIndex((prevIndex) =>
-            prevIndex === 0 ? imageUrls.length - 1 : prevIndex - 1
+            prevIndex === 0 ? masonryData.length - 1 : prevIndex - 1
         );
     };
 
@@ -39,26 +44,6 @@ export function MasonryContainer() {
         }
     };
 
-    const imageUrls: string[] = [
-        "https://placehold.co/600x400",
-        "https://placehold.co/1200x1600",
-        "https://placehold.co/600x400",
-        "https://placehold.co/1200x1600",
-        "https://placehold.co/600x400",
-        "https://placehold.co/1200x1600",
-        "https://placehold.co/600x400",
-        "https://placehold.co/1200x1600",
-        "https://placehold.co/600x400",
-        "https://placehold.co/1200x1600",
-        "https://placehold.co/600x400",
-        "https://placehold.co/1200x1600",
-        "https://placehold.co/600x400",
-        "https://placehold.co/1200x1600",
-        "https://placehold.co/600x400",
-        "https://placehold.co/1200x1600",
-        "https://placehold.co/600x400",
-    ];
-
     return (
         <>
             <Masonry
@@ -67,17 +52,17 @@ export function MasonryContainer() {
                 defaultHeight={450}
                 defaultColumns={3}
                 defaultSpacing={1}>
-                {imageUrls.map((url, index) => (
+                {masonryData.map((item: MasonryDataType, index: number) => (
                     <Grow in={true} timeout={250 + index * 150} key={index}>
                         <div onClick={() => handleClickOpen(index)}>
-                            <MasonryImages url={url} />
+                            <MasonryImages url={item.img_source} />
                         </div>
                     </Grow>
                 ))}
             </Masonry>
             <Dialog open={open} onClose={handleClose} fullWidth={true}>
                 <img
-                    src={imageUrls[selectedImageIndex]}
+                    src={masonryData[selectedImageIndex].img_source}
                     onClick={handleImageClick}
                     style={{ cursor: "pointer" }}
                 />

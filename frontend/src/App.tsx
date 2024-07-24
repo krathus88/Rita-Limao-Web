@@ -12,7 +12,10 @@ const router = createBrowserRouter([
             },
             {
                 path: "/portfolio",
-                lazy: () => import("@pages/PortfolioPage"),
+                async lazy() {
+                    const { Component } = await import("@pages/PortfolioPage");
+                    return { loader: Component.loader, Component };
+                },
             },
             {
                 path: "/blog",
