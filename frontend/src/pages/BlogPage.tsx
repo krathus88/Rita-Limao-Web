@@ -3,7 +3,7 @@ import "@components/Blog/Blog.css";
 
 export function Component() {
     return (
-        <main>
+        <main className="my-5">
             <Blog />
         </main>
     );

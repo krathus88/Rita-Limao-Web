@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Collapse } from "bootstrap";
 import "./Header.css";
 import { ThemeSwitch } from "./ThemeSwitch";
-import { Collapse } from "bootstrap";
+import { PageTab } from "./PageTab";
 
 export function Header() {
     const location = useLocation();
@@ -82,46 +83,21 @@ export function Header() {
                     id="navbarCollapse"
                     ref={navbarCollapseRef}>
                     <ul className="navbar-nav mb-2 mb-md-0 border-bottom">
-                        <li className="nav-item">
-                            <Link
-                                className="nav-link fw-bold"
-                                to="/"
-                                onClick={handleNavLinkClick}>
-                                Home
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                className="nav-link fw-bold"
-                                to="/portfolio"
-                                onClick={handleNavLinkClick}>
-                                Portfolio
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                className="nav-link fw-bold"
-                                to="/blog"
-                                onClick={handleNavLinkClick}>
-                                Blog
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                className="nav-link fw-bold"
-                                to="/about"
-                                onClick={handleNavLinkClick}>
-                                About
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                className="nav-link fw-bold"
-                                to="/contact"
-                                onClick={handleNavLinkClick}>
-                                Contact Me
-                            </Link>
-                        </li>
+                        <PageTab url="/" onClickEvent={handleNavLinkClick}>
+                            Home
+                        </PageTab>
+                        <PageTab url="/portfolio" onClickEvent={handleNavLinkClick}>
+                            Portfolio
+                        </PageTab>
+                        <PageTab url="/blog" onClickEvent={handleNavLinkClick}>
+                            Blog
+                        </PageTab>
+                        <PageTab url="/about" onClickEvent={handleNavLinkClick}>
+                            About
+                        </PageTab>
+                        <PageTab url="/contact" onClickEvent={handleNavLinkClick}>
+                            Contact Me
+                        </PageTab>
                     </ul>
                 </div>
             </nav>

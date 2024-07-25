@@ -3,7 +3,7 @@ import "@components/Contact/Contact.css";
 
 export function Component() {
     return (
-        <main>
+        <main className="my-5">
             <Contact />
         </main>
     );

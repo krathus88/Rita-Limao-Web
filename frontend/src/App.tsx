@@ -1,6 +1,32 @@
-import { Suspense } from "react";
+import { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "@components/Common/Layout";
+
+const HomePage = lazy(() =>
+    import("@pages/HomePage").then((module) => ({
+        default: module.Component,
+    }))
+);
+const PortfolioPage = lazy(() =>
+    import("@pages/PortfolioPage").then((module) => ({
+        default: module.Component,
+    }))
+);
+const BlogPage = lazy(() =>
+    import("@pages/BlogPage").then((module) => ({
+        default: module.Component,
+    }))
+);
+const AboutPage = lazy(() =>
+    import("@pages/AboutPage").then((module) => ({
+        default: module.Component,
+    }))
+);
+const ContactPage = lazy(() =>
+    import("@pages/ContactPage").then((module) => ({
+        default: module.Component,
+    }))
+);
 
 const router = createBrowserRouter([
     {
@@ -8,35 +34,32 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                lazy: () => import("@pages/HomePage"),
+                element: <HomePage />,
             },
             {
                 path: "/portfolio",
-                async lazy() {
-                    const { Component } = await import("@pages/PortfolioPage");
-                    return { loader: Component.loader, Component };
-                },
+                element: <PortfolioPage />,
+                loader: () =>
+                    import("@pages/PortfolioPage").then((module) =>
+                        module.Component.loader()
+                    ),
             },
             {
                 path: "/blog",
-                lazy: () => import("@pages/BlogPage"),
+                element: <BlogPage />,
             },
             {
                 path: "/about",
-                lazy: () => import("@pages/AboutPage"),
+                element: <AboutPage />,
             },
             {
                 path: "/contact",
-                lazy: () => import("@pages/ContactPage"),
+                element: <ContactPage />,
             },
         ],
     },
 ]);
 
 export function App() {
-    return (
-        <Suspense>
-            <RouterProvider router={router} />
-        </Suspense>
-    );
+    return <RouterProvider router={router} />;
 }

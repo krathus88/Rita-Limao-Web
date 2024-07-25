@@ -13,7 +13,7 @@ export function About() {
 
             <div className="d-flex">
                 <figure className="text-center">
-                    <Zoom in={true} timeout={500}>
+                    <Zoom in={true} timeout={250}>
                         <img className="rounded" src={aboutImg} />
                     </Zoom>
                     <Fade in={true} timeout={1250}>

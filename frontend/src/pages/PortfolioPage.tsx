@@ -12,7 +12,6 @@ async function loader() {
 
         return response.data;
     } catch (error) {
-        console.error("Error fetching data from API:", error);
         return redirect("/");
     }
 }
@@ -22,13 +21,13 @@ export function Component() {
 
     if (masonryDataLoader["portfolio_data"].length === 0)
         return (
-            <div className="mt-5 mx-auto">
+            <main className="my-5 mx-auto">
                 <p>Woah! This is coming soon!!</p>
-            </div>
+            </main>
         );
 
     return (
-        <main className="container-fluid">
+        <main className="container-fluid mb-5">
             <MasonryContainer masonryData={masonryDataLoader["portfolio_data"]} />
         </main>
     );
