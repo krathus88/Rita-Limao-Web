@@ -1,13 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Collapse } from "bootstrap";
+import { Navbar } from "react-bootstrap";
 import "./Header.css";
 import { ThemeSwitch } from "./ThemeSwitch";
 import { PageTab } from "./PageTab";
 
 export function Header() {
     const location = useLocation();
-    const navbarCollapseRef = useRef(null);
+
+    const [expanded, setExpanded] = useState(false);
 
     const isHomePage = location.pathname === "/";
 
@@ -34,15 +35,6 @@ export function Header() {
         };
     }, [isHomePage]);
 
-    const handleNavLinkClick = () => {
-        if (navbarCollapseRef.current) {
-            const bsCollapse = new Collapse(navbarCollapseRef.current, {
-                toggle: false,
-            });
-            bsCollapse.hide();
-        }
-    };
-
     return (
         <header>
             <div className="home-header">
@@ -63,44 +55,37 @@ export function Header() {
                         d="M0,192L60,202.7C120,213,240,235,360,218.7C480,203,600,149,720,144C840,139,960,181,1080,181.3C1200,181,1320,139,1380,117.3L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
                 </svg>
             </div>
-            <nav className="navbar navbar-expand-md mx-md-5 mx-2">
-                <Link className="navbar-brand" to="/">
+            <Navbar expanded={expanded} expand="md" className="mx-lg-5 mx-md-3 mx-2">
+                <Navbar.Brand as={Link} to="/" onClick={() => setExpanded(false)}>
                     <h1 className="fw-bold">Rita Limão</h1>
-                </Link>
+                </Navbar.Brand>
                 <ThemeSwitch />
-                <button
-                    className="navbar-toggler collapsed"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div
-                    className="navbar-collapse collapse justify-content-end text-center "
-                    id="navbarCollapse"
-                    ref={navbarCollapseRef}>
-                    <ul className="navbar-nav mb-2 mb-md-0 border-bottom">
-                        <PageTab url="/" onClickEvent={handleNavLinkClick}>
+                <Navbar.Toggle
+                    aria-controls="responsive-navbar-nav"
+                    onClick={() => setExpanded(expanded ? false : true)}
+                />
+                <Navbar.Collapse
+                    id="responsive-navbar-nav"
+                    className="justify-content-end text-center">
+                    <ul className="navbar-nav mb-2 mb-md-0 rounded">
+                        <PageTab url="/" setExpanded={setExpanded}>
                             Home
                         </PageTab>
-                        <PageTab url="/portfolio" onClickEvent={handleNavLinkClick}>
+                        <PageTab url="/portfolio" setExpanded={setExpanded}>
                             Portfolio
                         </PageTab>
-                        <PageTab url="/blog" onClickEvent={handleNavLinkClick}>
+                        <PageTab url="/blog" setExpanded={setExpanded}>
                             Blog
                         </PageTab>
-                        <PageTab url="/about" onClickEvent={handleNavLinkClick}>
+                        <PageTab url="/about" setExpanded={setExpanded}>
                             About
                         </PageTab>
-                        <PageTab url="/contact" onClickEvent={handleNavLinkClick}>
+                        <PageTab url="/contact" setExpanded={setExpanded}>
                             Contact Me
                         </PageTab>
                     </ul>
-                </div>
-            </nav>
+                </Navbar.Collapse>
+            </Navbar>
         </header>
     );
 }

@@ -42,7 +42,7 @@ header .home-header .wave path {
     transition: fill 0.5s ease;
 }
 
-.header-text {
+header .header-text {
     position: absolute;
     top: 15%;
     right: 2%;
@@ -53,32 +53,50 @@ header .home-header .wave path {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-header #navbarCollapse {
+header #responsive-navbar-nav {
     font-size: 1.25rem;
 }
 
 @media (min-width: 576px) {
-    .header-text {
+    header .header-text {
         max-width: 60%; /* Limit the width to prevent overflow */
     }
 }
 @media (min-width: 768px) {
-    .header-text {
+    header .header-text {
         max-width: 55%; /* Limit the width to prevent overflow */
     }
 }
 @media (min-width: 992px) {
-    .header-text {
+    header .header-text {
         max-width: 50%; /* Limit the width to prevent overflow */
     }
 }
 @media (min-width: 1200px) {
-    .header-text {
+    header .header-text {
         max-width: 40%; /* Limit the width to prevent overflow */
     }
 }
 @media (min-width: 1400px) {
-    .header-text {
+    header .header-text {
         max-width: 35%; /* Limit the width to prevent overflow */
+    }
+}
+
+@media (max-width: 767px) {
+    header #responsive-navbar-nav ul {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        gap: 0.25rem;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    header #responsive-navbar-nav li {
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    header #responsive-navbar-nav li a {
+        color: #fff;
     }
 }
